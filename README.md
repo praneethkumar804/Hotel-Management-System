@@ -1,39 +1,169 @@
-# Hotel Management System
+# 🏨 Nakshatra Hotel Management System
 
-A project hotel operations application with a Streamlit frontend, FastAPI HTTP backend, and SQLite database. Streamlit never accesses SQLite directly.
+A full-stack hotel operations management application built using **Python, FastAPI, Streamlit, and SQLite**. The system provides a centralized platform to manage hotel operations, including customers, rooms, bookings, payments, additional services, and reports.
 
-## Features
+## 🚀 Features
 
-Authentication, customer/room/booking/payment/service CRUD, booking-service relationships, room availability checks, dashboard KPIs, search and filters, revenue reports, and customer histories.
+- **Authentication:** User login and authentication.
+- **Dashboard:** Hotel statistics and key performance indicators (KPIs).
+- **Customer Management:** Create, view, update, and delete customer records.
+- **Room Management:** Manage room details and availability.
+- **Booking Management:** Create and manage hotel reservations.
+- **Payment Management:** Track and manage customer payments.
+- **Service Management:** Manage additional hotel services.
+- **Booking Services:** Connect additional services with bookings.
+- **Room Availability:** Check room availability before reservations.
+- **Search and Filters:** Easily find customers, rooms, and bookings.
+- **Revenue Reports:** View hotel revenue and business reports.
+- **Customer History:** Access customer booking histories.
 
-## Stack and architecture
+## 🛠️ Technology Stack
 
-Python 3.11+, FastAPI, Uvicorn, Pydantic, raw parameterized `sqlite3`, Streamlit, Requests, and passlib/bcrypt. The flow is `Streamlit -> HTTP/JSON -> FastAPI -> SQLite`.
+| Technology | Purpose |
+|---|---|
+| Python 3.11+ | Programming Language |
+| FastAPI | Backend REST API |
+| Streamlit | Frontend UI |
+| SQLite | Database |
+| Uvicorn | API Server |
+| Pydantic | Data Validation |
+| Requests | API Communication |
+| Passlib / bcrypt | Password Hashing |
 
-## Setup
+## 🏗️ Architecture
+
+The application follows a frontend-backend architecture:
+
+**Streamlit Frontend → HTTP/JSON → FastAPI Backend → SQLite Database**
+
+The frontend communicates with the backend through REST APIs. The backend handles business logic, validation, authentication, and database operations.
+
+## 📂 Project Structure
+
+```text
+Hotel_Management_System/
+│
+├── backend/
+│   ├── routers/
+│   ├── auth.py
+│   ├── crud.py
+│   ├── database.py
+│   ├── main.py
+│   ├── models.py
+│   └── schemas.py
+│
+├── frontend/
+│   ├── assets/
+│   ├── views/
+│   ├── api_client.py
+│   ├── app.py
+│   └── session.py
+│
+├── database/
+├── docs/
+├── screenshots/
+├── requirements.txt
+├── seed_data.py
+├── validate_seed_data.py
+└── README.md
+```
+
+## ⚙️ Installation and Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/praneethkumar804/Hotel-Management-System.git
+cd Hotel-Management-System
+```
+
+### 2. Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+### 3. Activate the virtual environment
+
+Windows PowerShell:
 
 ```powershell
-python -m venv venv
 .\venv\Scripts\Activate.ps1
+```
+
+### 4. Install dependencies
+
+```bash
 pip install -r requirements.txt
+```
+
+### 5. Initialize sample data
+
+```bash
 python seed_data.py
 ```
 
-The database is created automatically at `database/hotel.db` when FastAPI starts. Run the applications in separate terminals:
+### 6. Start the FastAPI backend
 
-```powershell
+Open the first terminal:
+
+```bash
 uvicorn backend.main:app --reload
+```
+
+### 7. Start the Streamlit frontend
+
+Open a second terminal:
+
+```bash
 streamlit run frontend/app.py
 ```
 
-Open `http://127.0.0.1:8000/docs` for Swagger and `http://localhost:8501` for Streamlit. Demo login: `admin` / `admin123`.
+## 🌐 Application URLs
 
-## Database
+- **Frontend:** http://localhost:8501
+- **Backend API:** http://127.0.0.1:8000
+- **Swagger API Documentation:** http://127.0.0.1:8000/docs
 
-Tables are Users, Customers, Rooms, Bookings, Payments, Services, and Booking_Services. Customers and rooms connect to bookings; bookings connect to payments and services through the junction table. See [docs/er_diagram.md](docs/er_diagram.md).
+## 🗄️ Database
 
-The project demonstrates parameterized INSERT, SELECT, UPDATE, DELETE, JOIN, COUNT, SUM, GROUP BY, ORDER BY, LIKE, COALESCE, foreign keys, validation, and friendly HTTP errors. Full endpoint details are in [docs/api_documentation.md](docs/api_documentation.md).
+The application uses SQLite for data storage.
 
-## Future improvements
+Main database tables:
 
-JWT or server-side sessions, role-based staff accounts, invoice generation, richer room calendar views, automated tests, and deployment configuration.
+- Users
+- Customers
+- Rooms
+- Bookings
+- Payments
+- Services
+- Booking_Services
+
+Database relationship documentation and diagrams are available in the `docs/` directory.
+
+## 📸 Screenshots
+
+Application screenshots are available in the `screenshots/` directory.
+
+## 🎯 Project Objective
+
+The objective of this project is to simplify hotel administration by digitizing daily hotel operations, reducing manual work, improving data organization, and providing an efficient reservation and management experience.
+
+## 🔮 Future Enhancements
+
+- Role-based access control.
+- Invoice and receipt generation.
+- Advanced room booking calendar.
+- Automated testing.
+- Cloud deployment.
+- Enhanced security and session management.
+
+## 👨‍💻 Developer
+
+**Praneeth Kumar**
+
+GitHub: [@praneethkumar804](https://github.com/praneethkumar804)
+
+---
+
+⭐ If you find this project useful, consider giving it a star!
