@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1100" viewBox="0 0 1600 1100">
+  <defs>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-opacity="0.18"/>
+    </filter>
+    <style>
+      .title { font: 700 34px Arial, sans-serif; fill: #172033; }
+      .subtitle { font: 400 16px Arial, sans-serif; fill: #667085; }
+      .entity-title { font: 700 19px Arial, sans-serif; fill: white; }
+      .field { font: 400 15px "Courier New", monospace; fill: #243044; }
+      .pk { font-weight: 700; }
+      .fk { font-weight: 700; }
+      .rel { font: 600 13px Arial, sans-serif; fill: #667085; }
+      .box { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; rx: 12; filter: url(#shadow); }
+      .head { fill: #18263f; }
+      .line { stroke: #64748b; stroke-width: 2.5; fill: none; }
+      .marker { fill: #64748b; }
+      .legend { font: 400 14px Arial, sans-serif; fill: #475467; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" class="marker"/>
+    </marker>
+  </defs>
+
+  <rect width="1600" height="1100" fill="#f8fafc"/>
+  <text x="800" y="55" text-anchor="middle" class="title">NAKSHATRA HOTEL MANAGEMENT SYSTEM</text>
+  <text x="800" y="82" text-anchor="middle" class="subtitle">Entity Relationship Diagram • SQLite Database</text>
+
+  <!-- USERS -->
+  <g transform="translate(55,145)">
+    <rect class="box" width="330" height="155"/>
+    <rect class="head" width="330" height="45" rx="12"/>
+    <rect class="head" y="30" width="330" height="15"/>
+    <text x="165" y="29" text-anchor="middle" class="entity-title">USERS</text>
+    <text x="18" y="73" class="field pk">PK  user_id : INTEGER</text>
+    <text x="18" y="98" class="field">username : TEXT UNIQUE</text>
+    <text x="18" y="123" class="field">password_hash : TEXT</text>
+  </g>
+
+  <!-- CUSTOMERS -->
+  <g transform="translate(55,365)">
+    <rect class="box" width="330" height="245"/>
+    <rect class="head" width="330" height="45" rx="12"/>
+    <rect class="head" y="30" width="330" height="15"/>
+    <text x="165" y="29" text-anchor="middle" class="entity-title">CUSTOMERS</text>
+    <text x="18" y="73" class="field pk">PK  customer_id : INTEGER</text>
+    <text x="18" y="98" class="field">name : TEXT</text>
+    <text x="18" y="123" class="field">age : INTEGER</text>
+    <text x="18" y="148" class="field">gender : TEXT</text>
+    <text x="18" y="173" class="field">phone : TEXT</text>
+    <text x="18" y="198" class="field">email : TEXT</text>
+    <text x="18" y="223" class="field">address : TEXT</text>
+  </g>
+
+  <!-- ROOMS -->
+  <g transform="translate(1215,145)">
+    <rect class="box" width="330" height="205"/>
+    <rect class="head" width="330" height="45" rx="12"/>
+    <rect class="head" y="30" width="330" height="15"/>
+    <text x="165" y="29" text-anchor="middle" class="entity-title">ROOMS</text>
+    <text x="18" y="73" class="field pk">PK  room_id : INTEGER</text>
+    <text x="18" y="98" class="field">room_number : TEXT UNIQUE</text>
+    <text x="18" y="123" class="field">room_type : TEXT</text>
+    <text x="18" y="148" class="field">price_per_night : REAL</text>
+    <text x="18" y="173" class="field">room_status : TEXT</text>
+  </g>
+
+  <!-- SERVICES -->
+  <g transform="translate(1215,410)">
+    <rect class="box" width="330" height="205"/>
+    <rect class="head" width="330" height="45" rx="12"/>
+    <rect class="head" y="30" width="330" height="15"/>
+    <text x="165" y="29" text-anchor="middle" class="entity-title">SERVICES</text>
+    <text x="18" y="73" class="field pk">PK  service_id : INTEGER</text>
+    <text x="18" y="98" class="field">service_name : TEXT</text>
+    <text x="18" y="123" class="field">price : REAL</text>
+    <text x="18" y="148" class="field">description : TEXT</text>
+    <text x="18" y="173" class="field">service_status : TEXT</text>
+  </g>
+
+  <!-- BOOKINGS -->
+  <g transform="translate(535,250)">
+    <rect class="box" width="530" height="255"/>
+    <rect class="head" width="530" height="45" rx="12"/>
+    <rect class="head" y="30" width="530" height="15"/>
+    <text x="265" y="29" text-anchor="middle" class="entity-title">BOOKINGS</text>
+    <text x="18" y="73" class="field pk">PK  booking_id : INTEGER</text>
+    <text x="18" y="98" class="field fk">FK  customer_id : INTEGER → CUSTOMERS</text>
+    <text x="18" y="123" class="field fk">FK  room_id : INTEGER → ROOMS</text>
+    <text x="18" y="148" class="field">check_in_date : TEXT</text>
+    <text x="18" y="173" class="field">check_out_date : TEXT</text>
+    <text x="18" y="198" class="field">number_of_guests : INTEGER</text>
+    <text x="18" y="223" class="field">booking_status : TEXT</text>
+  </g>
+
+  <!-- PAYMENTS -->
+  <g transform="translate(470,655)">
+    <rect class="box" width="530" height="255"/>
+    <rect class="head" width="530" height="45" rx="12"/>
+    <rect class="head" y="30" width="530" height="15"/>
+    <text x="265" y="29" text-anchor="middle" class="entity-title">PAYMENTS</text>
+    <text x="18" y="73" class="field pk">PK  payment_id : INTEGER</text>
+    <text x="18" y="98" class="field fk">FK  booking_id : INTEGER → BOOKINGS</text>
+    <text x="18" y="123" class="field fk">FK  customer_id : INTEGER → CUSTOMERS</text>
+    <text x="18" y="148" class="field">amount : REAL</text>
+    <text x="18" y="173" class="field">payment_method : TEXT</text>
+    <text x="18" y="198" class="field">payment_date : TEXT</text>
+    <text x="18" y="223" class="field">payment_status : TEXT</text>
+  </g>
+
+  <!-- BOOKING_SERVICES -->
+  <g transform="translate(1080,700)">
+    <rect class="box" width="430" height="205"/>
+    <rect class="head" width="430" height="45" rx="12"/>
+    <rect class="head" y="30" width="430" height="15"/>
+    <text x="215" y="29" text-anchor="middle" class="entity-title">BOOKING_SERVICES</text>
+    <text x="18" y="73" class="field pk">PK  booking_service_id : INTEGER</text>
+    <text x="18" y="98" class="field fk">FK  booking_id : INTEGER → BOOKINGS</text>
+    <text x="18" y="123" class="field fk">FK  service_id : INTEGER → SERVICES</text>
+    <text x="18" y="148" class="field">quantity : INTEGER DEFAULT 1</text>
+  </g>
+
+  <!-- Relationships -->
+  <path d="M385 470 C455 470 475 395 535 395" class="line"/>
+  <text x="430" y="445" class="rel">makes</text>
+
+  <path d="M1215 245 C1145 245 1120 335 1065 335" class="line"/>
+  <text x="1120" y="245" class="rel">hosts</text>
+
+  <path d="M700 505 C700 575 700 610 700 655" class="line"/>
+  <text x="715" y="585" class="rel">has</text>
+
+  <path d="M385 550 C425 620 445 700 470 735" class="line"/>
+  <text x="390" y="650" class="rel">makes</text>
+
+  <path d="M1065 445 C1140 470 1150 675 1180 700" class="line"/>
+  <text x="1090" y="590" class="rel">includes</text>
+
+  <path d="M1215 510 C1160 540 1150 650 1260 700" class="line"/>
+  <text x="1200" y="625" class="rel">offers</text>
+
+  <!-- Cardinality labels -->
+  <text x="395" y="458" class="rel">1</text><text x="515" y="385" class="rel">N</text>
+  <text x="1180" y="250" class="rel">1</text><text x="1080" y="325" class="rel">N</text>
+  <text x="675" y="545" class="rel">1</text><text x="675" y="640" class="rel">N</text>
+  <text x="405" y="585" class="rel">1</text><text x="450" y="705" class="rel">N</text>
+  <text x="1080" y="465" class="rel">1</text><text x="1160" y="685" class="rel">N</text>
+  <text x="1200" y="530" class="rel">1</text><text x="1265" y="685" class="rel">N</text>
+
+  <!-- Legend -->
+  <g transform="translate(55,965)">
+    <text x="0" y="0" class="legend"><tspan font-weight="700">PK</tspan> = Primary Key</text>
+    <text x="190" y="0" class="legend"><tspan font-weight="700">FK</tspan> = Foreign Key</text>
+    <text x="380" y="0" class="legend">1 = One</text>
+    <text x="480" y="0" class="legend">N = Many</text>
+    <text x="610" y="0" class="legend">Relationships reflect the current SQLite schema.</text>
+  </g>
+</svg>
